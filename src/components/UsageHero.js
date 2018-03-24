@@ -9,7 +9,11 @@ export default ({ page }) => (
     <img src='https://cdn.reactlandia.com/faceyspacey-white-logo.png' />
 
     <div>
-      <h2>universal(props => import(`./${props.page}`))</h2>
+      <h2>
+        {'universal(props => import('}
+        {'`./${props.page}` '}
+        {'))'}
+      </h2>
       <p className='example'>
         {"<UniversalComponent page='"}
         {page}
