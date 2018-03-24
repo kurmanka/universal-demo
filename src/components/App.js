@@ -21,8 +21,12 @@ export default class App extends React.Component {
 
     return (
       <div className={styles.container}>
-        <h1>Hello Reactlandia</h1>
-        {done && <div className={styles.checkmark}>all loaded ✔</div>}
+        <h1>Hello, curious dev!</h1>
+        {done && (
+          <div className={styles.checkmark}>
+            all components and all CSS loaded ✔
+          </div>
+        )}
 
         <UsageHero page={page} />
 
@@ -37,10 +41,13 @@ export default class App extends React.Component {
           {this.buttonText()}
         </button>
 
-        <p>
-          <span>*why are you looking at this? refresh the page</span>
-          <span>and view the source in Chrome for the real goods</span>
-        </p>
+        <footer>
+          <span>refresh the page</span>
+          <span>
+            view the source in Chrome to see which resources the page pulls
+          </span>
+          <span>this template is defined in src/components/App.js</span>
+        </footer>
       </div>
     )
   }
@@ -65,6 +72,7 @@ export default class App extends React.Component {
   }
 
   changePage = () => {
+    console.log('changePage()')
     if (this.state.loading) return
 
     const index = nextIndex(this.state.index)
@@ -74,12 +82,14 @@ export default class App extends React.Component {
   }
 
   beforeChange = ({ isSync }) => {
+    console.log('beforeChange()')
     if (!isSync) {
       this.setState({ loading: true, error: false })
     }
   }
 
   afterChange = ({ isSync, isServer, isMount }) => {
+    console.log('afterChange()')
     if (!isSync) {
       this.setState({ loading: false, error: false })
     }
@@ -89,12 +99,13 @@ export default class App extends React.Component {
   }
 
   handleError = error => {
+    console.log('handleError()')
     this.setState({ error: true, loading: false })
   }
 
   buttonText() {
     const { loading, error } = this.state
     if (error) return 'ERROR'
-    return loading ? 'LOADING...' : 'CHANGE PAGE'
+    return loading ? 'LOADING...' : 'NEXT PAGE'
   }
 }

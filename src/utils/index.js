@@ -1,17 +1,8 @@
-export const pages = [
-  'Foo',
-  'Bar',
-  'Baz',
-  'Rudy',
-  'Example',
-  'ReduxFirstRouter',
-  'Universal',
-  'FaceySpacey'
-]
+export const pages = ['Rudy', 'Example', 'ReduxFirstRouter', 'Universal']
 
 export const nextIndex = index => ++index % pages.length
 
 export const indexFromPath = path => {
-  path = path === '/' ? '/Foo' : path
+  path = path === '/' ? '/Rudy' : path
   return pages.indexOf(path.substr(1))
 }
